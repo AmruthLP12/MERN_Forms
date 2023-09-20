@@ -202,11 +202,38 @@ function Forms() {
       </div>
 
       <h2>Fetched Data</h2>
-      <ul>
-        {formData.map((data, index) => (
-          <li key={index}>{JSON.stringify(data)}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Text Value</th>
+            <th>Selected Option</th>
+            <th>Selected Options</th>
+            <th>Is Checked</th>
+            <th>Start Date</th>
+            <th>Datetime Value</th>
+            <th>Color</th>
+            <th>Current Date</th>
+            <th>Current Time</th>
+            <th>Radio Choice</th>
+          </tr>
+        </thead>
+        <tbody>
+          {formData.map((data, index) => (
+            <tr key={index}>
+              <td>{data.textValue}</td>
+              <td>{data.selectedOption}</td>
+              <td>{data.selectedOptions.join(", ")}</td>
+              <td>{data.isChecked ? "Yes" : "No"}</td>
+              <td>{new Date(data.startDate).toLocaleDateString()}</td>
+              <td>{new Date(data.datetimeValue).toLocaleString()}</td>
+              <td style={{ backgroundColor: data.color, width: "30px", height: "30px" }}></td>
+              <td>{new Date(data.currentDate).toLocaleDateString()}</td>
+              <td>{data.currentTime}</td>
+              <td>{data.radioChoice}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
