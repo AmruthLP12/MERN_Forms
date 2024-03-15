@@ -5,6 +5,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-time-picker/dist/TimePicker.css";
 import { TwitterPicker, ChromePicker, SketchPicker } from "react-color";
 
+// # For React and related dependencies
+// npm install react react-dom react-datepicker react-time-picker
+
+// # For making HTTP requests in the client-side code
+// npm install axios
+
+// # For color pickers
+// npm install react-color react-colorful
+
+// # For managing state and side effects in React
+// npm install react@latest react-dom@latest react-scripts@latest
+
+
 function Forms() {
   const [textValue, setTextValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
@@ -47,7 +60,7 @@ function Forms() {
 
     // Send a POST request to your server
     axios
-      .post("http://localhost:5000/api/submit-form", formData, {})
+      .post("http://localhost:5001/api/submit-form", formData, {})
       .then((response) => {
         console.log(response.data);
         window.alert(textValue + color + "sent sussesfully");
@@ -63,7 +76,7 @@ function Forms() {
   useEffect(() => {
     // Fetch form data when the component mounts
     axios
-      .get("http://localhost:5000/api/get-form-data")
+      .get("http://localhost:5001/api/get-form-data")
       .then((response) => {
         setFormData(response.data); // Store the fetched data in state
       })
